@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raíces - Ecosistema Premium de Legado & Sanación</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .fade-in { animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .bg-home-nature {
+            background-image: linear-gradient(to bottom, rgba(28, 25, 23, 0.85), rgba(4, 47, 46, 0.95)), url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .soil-plot {
+            background: linear-gradient(135deg, #4e342e 0%, #3e2723 100%);
+            box-shadow: inset 0 4px 8px rgba(0,0,0,0.4), 0 2px 4px rgba(255,255,255,0.05);
+            transition: all 0.25s ease;
+        }
+        .soil-plot:hover {
+            transform: scale(1.05);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2), 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Humo animado de la chimenea de la casita */
+        .smoke {
+            animation: smokeMove 3s ease-in-out infinite;
+            opacity: 0;
+        }
+        @keyframes smokeMove {
+            0% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-20px) translateX(8px) scale(1.5); opacity: 0; }
+        }
+
+        .animated-leaf {
+            animation: floatLeaf 3s ease-in-out infinite alternate;
+        }
+        @keyframes floatLeaf {
+            from { transform: translateY(0px) rotate(0deg); }
+            to { transform: translateY(-5px) rotate(4deg); }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased min-h-screen flex flex-col scroll-smooth">
+
+    <div id="pantalla-home" class="min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center px-4 py-12 text-center bg-home-nature text-stone-100 fade-in">
+        <div class="max-w-3xl mx-auto space-y-8 relative z-10">
+            <div class="flex flex-col items-center gap-3">
+                <div class="p-4 bg-emerald-800/80 text-emerald-300 rounded-full shadow-2xl border border-emerald-500/30 backdrop-blur-md">
+                    <i data-lucide="tree-pine" class="w-14 h-14"></i>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-serif font-black tracking-wide mt-1 drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-white via-stone-200 to-emerald-200">Raíces</h1>
+                <p class="text-[11px] text-emerald-400 font-bold tracking-widest uppercase bg-emerald-950/60 px-4 py-1 rounded-full border border-emerald-800/40">Ecosistema Digital de Legado & Sanación Familiar</p>
+            </div>
+
+            <div class="space-y-3 max-w-xl mx-auto">
+                <blockquote class="text-xl md:text-2xl font-serif italic text-stone-200 leading-relaxed">
+                    "Un refugio de paz para ordenar tu historia y honrar los ciclos de la vida."
+                </blockquote>
+                <p class="text-xs md:text-sm text-stone-300/90 leading-relaxed max-w-lg mx-auto">
+                    Acompañamiento integral en Chile: protege tus voluntades en vida de forma abierta, gestiona tus trámites sucesorios con claridad o abraza el duelo en un jardín de memoria viva.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 max-w-3xl mx-auto">
+                <button onclick="irAPestañaDirecto('preventivo')" class="p-5 bg-white/10 border border-white/10 hover:border-emerald-400 rounded-2xl text-left transition-all hover:bg-white/15 hover:-translate-y-1 group cursor-pointer backdrop-blur-xs shadow-lg">
+                    <i data-lucide="sprout" class="w-6 h-6 text-emerald-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                    <span class="block font-serif font-bold text-white text-sm">Mi Legado en Vida</span>
+                    <span class="block text-[11px] text-stone-300 mt-1 leading-tight">Configura y modifica tu Bóveda Privada de inmediato y gana semillas.</span>
+                </button>
+
+                <button onclick="irAPestañaDirecto('post-deceso')" class="p-5 bg-white/10 border border-white/10 hover:border-emerald-400 rounded-2xl text-left transition-all hover:bg-white/15 hover:-translate-y-1 group cursor-pointer backdrop-blur-xs shadow-lg">
+                    <i data-lucide="heart-handshake" class="w-6 h-6 text-emerald-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                    <span class="block font-serif font-bold text-white text-sm">Trámites Legales</span>
+                    <span class="block text-[11px] text-stone-300 mt-1 leading-tight">Guía paso a paso sobre herencias, Registro Civil y Posesión Efectiva.</span>
+                </button>
+
+                <button onclick="irAPestañaDirecto('duelo')" class="p-5 bg-emerald-800/90 hover:bg-emerald-800 text-stone-100 rounded-2xl text-left transition-all hover:-translate-y-1 shadow-xl group cursor-pointer border border-emerald-600">
+                    <i data-lucide="heart" class="w-6 h-6 text-rose-300 mb-2 group-hover:scale-110 transition-transform"></i>
+                    <span class="block font-serif font-bold text-white text-sm">Refugio del Duelo</span>
+                    <span class="block text-[11px] text-emerald-200 mt-1 leading-tight">Soporte emocional, líneas de crisis *4141 y cartas conmemorativas al viento.</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="interfaz-app" class="hidden flex-col flex-grow">
+        <header id="app-header" class="bg-gradient-to-r from-emerald-950 to-stone-900 text-stone-100 shadow-xl sticky top-0 z-50 border-b border-emerald-900/50">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                <div onclick="volverAlHome()" class="flex items-center gap-3 cursor-pointer group">
+                    <div class="p-2 bg-emerald-800 rounded-xl group-hover:bg-emerald-700 transition-colors">
+                        <i data-lucide="tree-pine" class="text-emerald-400 w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-base font-serif font-bold tracking-wide group-hover:text-emerald-300 transition-colors">Raíces Chile</h1>
+                        <p class="text-[9px] text-emerald-400 uppercase tracking-widest font-semibold">Plataforma de Contención Familiar</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button onclick="cambiarSeccionUI('preventivo')" class="text-xs bg-white/5 border border-white/10 hover:bg-white/10 px-4 py-2 rounded-xl font-medium transition-all flex items-center gap-1.5 cursor-pointer"><i data-lucide="folder-lock" class="w-3.5 h-3.5 text-emerald-400"></i> Mi Bóveda Abierta</button>
+                    <button onclick="toggleElemento('menu-global')" class="p-2 bg-stone-800/60 hover:bg-stone-800 rounded-xl transition-colors border border-stone-700/50 cursor-pointer">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                    <div id="menu-global" class="hidden absolute right-6 top-18 w-56 bg-white border border-stone-200 rounded-2xl shadow-2xl py-2.5 z-50 text-stone-800 fade-in">
+                        <button onclick="cambiarSeccionUI('preventivo')" class="w-full text-left px-4 py-2.5 text-xs font-semibold hover:bg-stone-50 flex items-center gap-2.5"><i data-lucide="sprout" class="w-4 h-4 text-emerald-700"></i> Preparación en Vida</button>
+                        <button onclick="cambiarSeccionUI('post-deceso')" class="w-full text-left px-4 py-2.5 text-xs font-semibold hover:bg-stone-50 flex items-center gap-2.5"><i data-lucide="heart-handshake" class="w-4 h-4 text-amber-700"></i> Trámites Sucesores</button>
+                        <button onclick="cambiarSeccionUI('duelo')" class="w-full text-left px-4 py-2.5 text-xs font-semibold hover:bg-stone-50 flex items-center gap-2.5"><i data-lucide="heart" class="w-4 h-4 text-rose-500"></i> Refugio del Duelo</button>
+                        <hr class="border-stone-100 my-2">
+                        <button onclick="volverAlHome()" class="w-full text-left px-4 py-2.5 text-xs font-bold text-rose-600 hover:bg-rose-50 flex items-center gap-2.5"><i data-lucide="log-out" class="w-4 h-4"></i> Volver a la Portada</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="bg-white border-b border-stone-200 sticky top-[61px] z-40 shadow-xs">
+            <div class="max-w-7xl mx-auto px-6 flex gap-6 md:gap-10 overflow-x-auto">
+                <button onclick="cambiarSeccionUI('preventivo')" id="nav-prev" class="py-4 px-1 font-semibold text-xs md:text-sm border-b-2 text-stone-500 whitespace-nowrap cursor-pointer flex items-center gap-2 transition-all"><i data-lucide="sprout" class="w-4 h-4"></i> En Vida & Bóveda Abierta</button>
+                <button onclick="cambiarSeccionUI('post-deceso')" id="nav-post" class="py-4 px-1 font-semibold text-xs md:text-sm border-b-2 text-stone-500 whitespace-nowrap cursor-pointer flex items-center gap-2 transition-all"><i data-lucide="heart-handshake" class="w-4 h-4"></i> Trámites Legales Chile</button>
+                <button onclick="cambiarSeccionUI('duelo')" id="nav-duel" class="py-4 px-1 font-semibold text-xs md:text-sm border-b-2 text-stone-500 whitespace-nowrap cursor-pointer flex items-center gap-2 transition-all"><i data-lucide="heart" class="w-4 h-4"></i> Refugio Emocional</button>
+            </div>
+        </div>
+
+        <main class="flex-grow w-full max-w-7xl mx-auto px-4 md:px-6 py-8">
+            
+            <div id="seccion-preventivo" class="hidden space-y-8 fade-in">
+                
+                <div class="bg-gradient-to-br from-emerald-950 to-stone-900 text-stone-100 p-6 md:p-8 rounded-3xl shadow-xl border border-emerald-800/30 relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 opacity-5 text-white"><i data-lucide="shield-check" class="w-48 h-48"></i></div>
+                    <div class="relative z-10 space-y-3 max-w-3xl">
+                        <div class="flex items-center gap-2 text-emerald-400"><i data-lucide="sparkles" class="w-4 h-4"></i><span class="text-[10px] uppercase font-bold tracking-widest">Planificación Consciente</span></div>
+                        <p id="cita-filosofica" class="font-serif italic text-base md:text-lg text-stone-200 leading-relaxed">"Estar listo para partir es el mayor acto de orden y amor que puedes regalarle a los que se quedan."</p>
+                        <div class="flex justify-between items-center pt-3 border-t border-white/10">
+                            <span id="cita-autor" class="text-xs text-emerald-300 font-semibold">— Filosofía Estoica</span>
+                            <button onclick="rotarCita()" class="text-stone-300 hover:text-white text-xs font-medium flex items-center gap-1.5 bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-xl transition-all cursor-pointer"><i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Siguiente reflexión</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="menu-legado-completo" class="space-y-8 fade-in">
+                    
+                    <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-stone-200 pb-4 gap-4">
+                        <div>
+                            <h3 class="font-serif font-bold text-stone-900 text-xl flex items-center gap-2"><i data-lucide="archive" class="text-emerald-800 w-5 h-5"></i> Mi Bóveda de Voluntades Activa</h3>
+                            <p class="text-xs text-stone-500">Puedes ingresar información o cambiar/modificar tus registros y ver lo que subiste de inmediato.</p>
+                        </div>
+                        <div class="bg-emerald-50 text-emerald-900 text-xs px-4 py-2 rounded-xl font-bold border border-emerald-200/60 flex items-center gap-1.5">
+                            <i data-lucide="shield" class="w-4 h-4 text-emerald-600 animate-pulse"></i> Resguardo Cifrado End-to-End
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs space-y-4 flex flex-col justify-between transition-all hover:shadow-md" id="card-modulo-Guardianes">
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2 text-emerald-900"><i data-lucide="users" class="w-4.5 h-4.5"></i><h4 class="text-xs font-bold uppercase tracking-wider">1. Guardianes de Confianza</h4></div>
+                                    <span id="badge-status-Guardianes" class="bg-amber-100 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Vacío</span>
+                                </div>
+                                <p class="text-xs text-stone-500 leading-relaxed">Asigna el nombre y correo de los familiares que liberarán esta bóveda.</p>
+                                
+                                <div id="form-Guardianes" class="space-y-2 pt-1">
+                                    <input type="text" id="g-nombre" placeholder="Nombre de tu Protector" class="w-full text-xs p-2.5 bg-stone-50 border border-stone-200 rounded-xl">
+                                    <input type="email" id="g-correo" placeholder="correo@ejemplo.cl" class="w-full text-xs p-2.5 bg-stone-50 border border-stone-200 rounded-xl">
+                                    <button onclick="guardarModuloLegado('Guardianes')" class="w-full bg-stone-900 hover:bg-emerald-800 text-white font-semibold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-colors"><i data-lucide="save" class="w-3.5 h-3.5"></i> Guardar Datos y ganar planta</button>
+                                </div>
+                                <div id="preview-Guardianes" class="hidden bg-emerald-50/50 p-4 rounded-xl border border-emerald-100 text-xs space-y-2">
+                                    <p class="font-bold text-emerald-900 flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-700"></i> Información Resguardada con éxito:</p>
+                                    <p class="bg-white p-2.5 rounded-lg border border-stone-200 text-stone-700 font-medium">Registrado: <span id="val-Guardianes" class="font-normal text-stone-600"></span></p>
+                                    <button onclick="modificarModuloLegado('Guardianes')" class="text-emerald-700 hover:text-emerald-900 font-bold text-[11px] flex items-center gap-1 mt-1 cursor-pointer underline"><i data-lucide="edit-3" class="w-3 h-3"></i> Modificar o cambiar datos</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs space-y-4 flex flex-col justify-between transition-all hover:shadow-md" id="card-modulo-Documentos">
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2 text-indigo-900"><i data-lucide="file-text" class="w-4.5 h-4.5"></i><h4 class="text-xs font-bold uppercase tracking-wider">2. Documentos Críticos</h4></div>
+                                    <span id="badge-status-Documentos" class="bg-amber-100 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Vacío</span>
+                                </div>
+                                <p class="text-xs text-stone-500 leading-relaxed">Carga copias de tu testamento o contratos de seguros importantes.</p>
+                                
+                                <div id="form-Documentos" class="pt-1">
+                                    <label class="w-full border-2 border-dashed border-stone-300 rounded-2xl p-4 flex flex-col items-center justify-center bg-stone-50 cursor-pointer hover:bg-stone-100 transition-colors">
+                                        <i data-lucide="upload-cloud" class="w-7 h-7 text-stone-400 mb-1"></i>
+                                        <span class="text-xs text-stone-700 font-semibold">Seleccionar documento PDF / Imagen</span>
+                                        <input type="file" id="file-input" class="hidden" onchange="archivoSimuladoCargado()">
+                                    </label>
+                                    <p id="status-archivo" class="text-[11px] text-emerald-700 font-semibold text-center mt-2 hidden flex items-center justify-center gap-1">✓ Archivo cargado en memoria caché.</p>
+                                    <button onclick="guardarModuloLegado('Documentos')" class="w-full mt-3 bg-stone-900 hover:bg-emerald-800 text-white font-semibold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-colors"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Cifrar Documento y ganar planta</button>
+                                </div>
+                                <div id="preview-Documentos" class="hidden bg-emerald-50/50 p-4 rounded-xl border border-emerald-100 text-xs space-y-2">
+                                    <p class="font-bold text-emerald-900 flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-700"></i> Archivo Resguardado con éxito:</p>
+                                    <p class="bg-white p-2.5 rounded-lg border border-stone-200 text-stone-700 font-medium flex items-center gap-1.5"><i data-lucide="file-check" class="text-emerald-600 w-4 h-4"></i> <span id="val-Documentos">Documento_Cifrado_Protegido.pdf</span></p>
+                                    <button onclick="modificarModuloLegado('Documentos')" class="text-emerald-700 hover:text-emerald-900 font-bold text-[11px] flex items-center gap-1 mt-1 cursor-pointer underline"><i data-lucide="refresh-cw" class="w-3 h-3"></i> Reemplazar o cambiar archivo</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs space-y-4 flex flex-col justify-between transition-all hover:shadow-md" id="card-modulo-Cementerio">
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2 text-amber-900"><i data-lucide="map-pin" class="w-4.5 h-4.5"></i><h4 class="text-xs font-bold uppercase tracking-wider">3. Preferencias de Sepultación</h4></div>
+                                    <span id="badge-status-Cementerio" class="bg-amber-100 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Vacío</span>
+                                </div>
+                                <p class="text-xs text-stone-500 leading-relaxed">Estipula si cuentas con una parcela o parque de preferencia.</p>
+                                
+                                <div id="form-Cementerio" class="space-y-2 pt-1">
+                                    <input type="text" id="c-parque" placeholder="Ej: Parque del Recuerdo, Parcela 4, Sector B" class="w-full text-xs p-2.5 bg-stone-50 border border-stone-200 rounded-xl">
+                                    <button onclick="guardarModuloLegado('Cementerio')" class="w-full bg-stone-900 hover:bg-emerald-800 text-white font-semibold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-colors"><i data-lucide="save" class="w-3.5 h-3.5"></i> Registrar Destino y ganar planta</button>
+                                </div>
+                                <div id="preview-Cementerio" class="hidden bg-emerald-50/50 p-4 rounded-xl border border-emerald-100 text-xs space-y-2">
+                                    <p class="font-bold text-emerald-900 flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-700"></i> Ubicación Resguardada con éxito:</p>
+                                    <p class="bg-white p-2.5 rounded-lg border border-stone-200 text-stone-700 font-medium">Ubicación: <span id="val-Cementerio" class="font-normal text-stone-600"></span></p>
+                                    <button onclick="modificarModuloLegado('Cementerio')" class="text-emerald-700 hover:text-emerald-900 font-bold text-[11px] flex items-center gap-1 mt-1 cursor-pointer underline"><i data-lucide="edit-3" class="w-3 h-3"></i> Cambiar ubicación o parcela</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs space-y-4 flex flex-col justify-between transition-all hover:shadow-md" id="card-modulo-Cartas">
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2 text-rose-900"><i data-lucide="mail" class="w-4.5 h-4.5"></i><h4 class="text-xs font-bold uppercase tracking-wider">4. Cartas de Despedida Familiares</h4></div>
+                                    <span id="badge-status-Cartas" class="bg-amber-100 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Vacío</span>
+                                </div>
+                                <p class="text-xs text-stone-500 leading-relaxed">Escribe un mensaje profundo que tus seres queridos recibirán a futuro.</p>
+                                
+                                <div id="form-Cartas" class="space-y-2 pt-1">
+                                    <textarea id="m-carta" rows="3" placeholder="Querida familia, les comparto estas palabras de paz..." class="w-full text-xs p-3 bg-stone-50 border border-stone-200 rounded-xl resize-none"></textarea>
+                                    <button onclick="guardarModuloLegado('Cartas')" class="w-full bg-stone-900 hover:bg-emerald-800 text-white font-semibold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-colors"><i data-lucide="mail-check" class="w-3.5 h-3.5"></i> Encriptar Mensajes y ganar planta</button>
+                                </div>
+                                <div id="preview-Cartas" class="hidden bg-emerald-50/50 p-4 rounded-xl border border-emerald-100 text-xs space-y-2">
+                                    <p class="font-bold text-emerald-900 flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-700"></i> Texto Resguardado de forma confidencial:</p>
+                                    <p class="bg-white p-2.5 rounded-lg border border-stone-200 text-stone-700 font-mono italic whitespace-pre-wrap" id="val-Cartas"></p>
+                                    <button onclick="modificarModuloLegado('Cartas')" class="text-emerald-700 hover:text-emerald-900 font-bold text-[11px] flex items-center gap-1 mt-1 cursor-pointer underline"><i data-lucide="edit-3" class="w-3 h-3"></i> Modificar texto o cambiar carta</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="seccion-post-deceso" class="hidden space-y-6 fade-in">
+                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-md flex flex-col md:flex-row items-center gap-6">
+                    <div class="flex-shrink-0 bg-stone-50 p-5 rounded-2xl border border-stone-200 text-emerald-800 shadow-inner"><div id="icono-arbol-dinamico"><i data-lucide="seedling" class="w-16 h-16 text-amber-700 animate-bounce"></i></div></div>
+                    <div class="space-y-1 text-center md:text-left flex-grow">
+                        <span id="badge-etapa-actual" class="bg-amber-100 text-amber-900 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Etapa 0: Semilla Inicial</span>
+                        <h3 id="titulo-arbol-dinamico" class="font-serif font-bold text-stone-900 text-2xl mt-2">El Árbol de la Guía Sucesoria</h3>
+                        <p id="desc-arbol-dinamico" class="text-xs text-stone-500 max-w-2xl leading-relaxed">Completa ordenadamente cada hito legal obligatorio chileno para ver crecer este gran árbol de contención familiar.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+                    
+                    <div class="lg:col-span-2 bg-white p-6 rounded-3xl border border-stone-200 shadow-xs space-y-8 relative overflow-hidden">
+                        
+                        <div id="nodo-mapa-1" class="relative flex gap-5">
+                            <div id="indicador-circulo-1" class="w-12 h-12 rounded-xl bg-amber-600 text-white flex items-center justify-center font-bold text-sm shadow-md z-10 flex-shrink-0">1</div>
+                            <div class="space-y-1.5 flex-grow pb-4 border-b border-stone-100">
+                                <span class="text-[9px] font-bold bg-amber-100 text-amber-900 px-2 py-0.5 rounded-md uppercase">Paso Inmediato</span>
+                                <h4 class="font-serif font-bold text-stone-900 text-base cursor-pointer hover:text-emerald-800 transition-colors" onclick="mostrarPanelExplicativo(1)">Certificado Médico de Defunción</h4>
+                                <div id="control-nodo-1"><button onclick="completarPasoMapa(1)" class="bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-xs px-4 py-2 rounded-xl cursor-pointer shadow-xs flex items-center gap-1.5 transition-all"><i data-lucide="check" class="w-4 h-4"></i> Marcar como Completado</button></div>
+                            </div>
+                        </div>
+
+                        <div id="nodo-mapa-2" class="relative flex gap-5 opacity-40 pointer-events-none transition-all">
+                            <div id="indicador-circulo-2" class="w-12 h-12 rounded-xl bg-stone-200 text-stone-400 flex items-center justify-center font-bold text-sm z-10 flex-shrink-0"><i data-lucide="lock" class="w-4 h-4"></i></div>
+                            <div class="space-y-1.5 flex-grow pb-4 border-b border-stone-100">
+                                <span class="text-[9px] font-bold bg-amber-100 text-amber-900 px-2 py-0.5 rounded-md uppercase">Dentro de 24 Horas</span>
+                                <h4 class="font-serif font-bold text-stone-900 text-base cursor-pointer hover:text-emerald-800 transition-colors" onclick="mostrarPanelExplicativo(2)">Inscripción en el Registro Civil</h4>
+                                <div id="control-nodo-2"></div>
+                            </div>
+                        </div>
+
+                        <div id="nodo-mapa-3" class="relative flex gap-5 opacity-40 pointer-events-none transition-all">
+                            <div id="indicador-circulo-3" class="w-12 h-12 rounded-xl bg-stone-200 text-stone-400 flex items-center justify-center font-bold text-sm z-10 flex-shrink-0"><i data-lucide="lock" class="w-4 h-4"></i></div>
+                            <div class="space-y-1.5 flex-grow pb-4 border-b border-stone-100">
+                                <span class="text-[9px] font-bold bg-amber-100 text-amber-900 px-2 py-0.5 rounded-md uppercase">Dentro de 48 Horas</span>
+                                <h4 class="font-serif font-bold text-stone-900 text-base cursor-pointer hover:text-emerald-800 transition-colors" onclick="mostrarPanelExplicativo(3)">Pase de Sepultación & Funeraria</h4>
+                                <div id="control-nodo-3"></div>
+                            </div>
+                        </div>
+
+                        <div id="nodo-mapa-4" class="relative flex gap-5 opacity-40 pointer-events-none transition-all">
+                            <div id="indicador-circulo-4" class="w-12 h-12 rounded-xl bg-stone-200 text-stone-400 flex items-center justify-center font-bold text-sm z-10 flex-shrink-0"><i data-lucide="lock" class="w-4 h-4"></i></div>
+                            <div class="space-y-1.5 flex-grow pb-4 border-b border-stone-100">
+                                <span class="text-[9px] font-bold bg-teal-100 text-teal-900 px-2 py-0.5 rounded-md uppercase">Post-Funeral</span>
+                                <h4 class="font-serif font-bold text-stone-900 text-base cursor-pointer hover:text-emerald-800 transition-colors" onclick="mostrarPanelExplicativo(4)">Solicitud de Posesión Efectiva</h4>
+                                <div id="control-nodo-4"></div>
+                            </div>
+                        </div>
+
+                        <div id="nodo-mapa-5" class="relative flex gap-5 opacity-40 pointer-events-none transition-all">
+                            <div id="indicador-circulo-5" class="w-12 h-12 rounded-xl bg-stone-200 text-stone-400 flex items-center justify-center font-bold text-sm z-10 flex-shrink-0"><i data-lucide="lock" class="w-4 h-4"></i></div>
+                            <div class="space-y-1.5 flex-grow">
+                                <span class="text-[9px] font-bold bg-teal-100 text-teal-900 px-2 py-0.5 rounded-md uppercase">Regularización Final</span>
+                                <h4 class="font-serif font-bold text-stone-900 text-base cursor-pointer hover:text-emerald-800 transition-colors" onclick="mostrarPanelExplicativo(5)">Inscripción de Bienes en el CBR</h4>
+                                <div id="control-nodo-5"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs lg:sticky lg:top-[160px] space-y-4 min-h-[320px]">
+                        <div class="flex items-center gap-2 border-b border-stone-100 pb-3 text-stone-900"><i data-lucide="book-open" class="text-emerald-700 w-4.5 h-4.5"></i><h4 class="text-xs font-bold uppercase tracking-wider">Ficha Técnica Chilena</h4></div>
+                        <div id="vacio-explicativo" class="text-stone-400 text-xs text-center py-16 space-y-2"><i data-lucide="help-circle" class="w-9 h-9 mx-auto text-stone-300"></i><p class="max-w-[180px] mx-auto">Haz clic sobre las letras de cualquier paso legal activo para desplegar sus instrucciones.</p></div>
+                        
+                        <div id="contenido-explicativo-fijo" class="hidden text-xs text-stone-600 space-y-3.5 fade-in">
+                            <h5 id="ticket-titulo" class="font-serif font-bold text-stone-900 text-sm border-l-4 border-emerald-800 pl-2.5">Título del Trámite</h5>
+                            <div><span class="text-[10px] uppercase font-bold text-stone-400 tracking-wider block">¿Qué es?</span><p id="ticket-que" class="leading-relaxed mt-0.5 text-stone-700"></p></div>
+                            <div><span class="text-[10px] uppercase font-bold text-stone-400 tracking-wider block">¿Dónde y cómo se realiza?</span><p id="ticket-como" class="leading-relaxed mt-0.5 text-stone-700"></p></div>
+                            <div class="grid grid-cols-2 gap-3 pt-2 text-[10px]">
+                                <div class="bg-stone-50 p-2.5 rounded-xl border border-stone-100"><strong class="block text-stone-400 uppercase">COSTO CIVIL</strong><span id="ticket-costo" class="font-bold text-stone-800"></span></div>
+                                <div class="bg-stone-50 p-2.5 rounded-xl border border-stone-100"><strong class="block text-stone-400 uppercase">PLAZO LEGAL</strong><span id="ticket-plazo" class="font-bold text-stone-800"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="seccion-duelo" class="hidden space-y-8 fade-in">
+                
+                <div class="bg-gradient-to-br from-stone-900 via-stone-950 to-emerald-950 text-stone-100 p-6 md:p-8 rounded-3xl border border-emerald-900/40 shadow-xl">
+                    <div class="space-y-2.5 max-w-3xl">
+                        <span class="bg-emerald-900/80 border border-emerald-700/30 text-emerald-300 text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Soporte Psicoterapéutico Integral</span>
+                        <h3 class="font-serif font-bold text-2xl text-white">Las Cuatro Estaciones de tu Bosque Interior</h3>
+                        <p class="text-xs text-stone-300 leading-relaxed">El duelo no es una línea recta, es un proceso circular de la naturaleza. Como un árbol caduco, transitamos el **Otoño** y el **Invierno** (el vacío del silencio). Las raíces profundas sostienen los brotes del mañana.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                    
+                    <div class="lg:col-span-2 space-y-8">
+                        <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs space-y-4 transition-all hover:shadow-md">
+                            <div class="space-y-1">
+                                <h4 class="font-serif font-bold text-stone-900 text-lg flex items-center gap-2"><i data-lucide="wind" class="text-amber-600 w-5 h-5"></i> El Memorial del Viento e Hojas de Luz</h4>
+                                <p class="text-xs text-stone-500">Expresa de forma libre tus sentimientos. Tu mensaje volará y se transformará en una hoja de luz en las ramas altas.</p>
+                            </div>
+                            <textarea id="texto-duelo-libre" rows="4" placeholder="Escribe aquí con total libertad, nadie juzgará tus palabras..." class="w-full text-xs p-3.5 bg-stone-50 border border-stone-200 rounded-2xl focus:outline-emerald-800 transition-all resize-none shadow-inner"></textarea>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[11px] text-stone-400 italic flex items-center gap-1"><i data-lucide="eye-off" class="w-3.5 h-3.5"></i> Escrito 100% confidencial y efímero</span>
+                                <button onclick="enviarCartaAlAire()" class="bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2.5 px-5 rounded-xl text-xs flex items-center gap-2 cursor-pointer shadow-md transition-all">
+                                    <i data-lucide="leaf" class="w-4 h-4 text-emerald-300"></i> Colgar Hoja de Memoria
+                                </button>
+                            </div>
+
+                            <div id="recuadro-aliento" class="hidden bg-gradient-to-r from-emerald-50/70 to-amber-50/70 p-4.5 rounded-2xl border border-emerald-100 shadow-xs flex gap-3.5 items-start fade-in">
+                                <div class="bg-emerald-800 text-white p-2 rounded-xl animated-leaf shadow-md flex-shrink-0"><i data-lucide="pocket" class="w-4 h-4"></i></div>
+                                <div class="space-y-1">
+                                    <h5 class="text-[10px] font-bold uppercase tracking-widest text-emerald-900">El Susurro de las Ramas (Respuesta Psicológica)</h5>
+                                    <p id="mensaje-aliento-texto" class="text-stone-700 font-serif italic text-xs leading-relaxed"></p>
+                                </div>
+                            </div>
+
+                            <div class="pt-3 border-t border-stone-100 space-y-2">
+                                <h5 class="text-[10px] uppercase font-bold tracking-widest text-stone-400">Tus hojas de luz colgadas en esta sesión:</h5>
+                                <div id="contenedor-hojas-almas" class="flex flex-wrap gap-2.5">
+                                    <span class="text-[11px] bg-stone-50 text-stone-400 px-3 py-1.5 rounded-xl italic border border-stone-100">Aún no has colgado cartas. Expresa tus sentimientos arriba.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs space-y-4">
+                            <div class="space-y-1">
+                                <h4 class="font-serif font-bold text-stone-900 text-lg flex items-center gap-2"><i data-lucide="sparkles" class="text-emerald-700 w-5 h-5"></i> Pequeños Actos Diarios para Cuidar tus Raíces</h4>
+                                <p class="text-xs text-stone-500">Pequeños rituales cotidianos recomendados para darte contención. Realizarlos te otorga semillas exóticas.</p>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3.5 bg-stone-50 rounded-2xl border border-stone-100 text-xs gap-4 transition-all hover:bg-stone-100/50">
+                                    <div class="flex items-center gap-2.5"><i data-lucide="droplet" class="w-4 h-4 text-blue-500"></i><span>Beber un vaso de agua o té caliente dedicando 3 minutos a tu respiración consciente.</span></div>
+                                    <button onclick="completarRitual(1, '🌸')" id="btn-ritual-1" class="bg-white hover:bg-emerald-800 hover:text-white border border-stone-200 font-bold px-4 py-1.5 rounded-xl text-stone-700 cursor-pointer shadow-2xs transition-all text-xs">Hecho</button>
+                                </div>
+                                <div class="flex items-center justify-between p-3.5 bg-stone-50 rounded-2xl border border-stone-100 text-xs gap-4 transition-all hover:bg-stone-100/50">
+                                    <div class="flex items-center gap-2.5"><i data-lucide="music" class="w-4 h-4 text-purple-500"></i><span>Escuchar una melodía significativa sin reprimir el llanto o los recuerdos alegres.</span></div>
+                                    <button onclick="completarRitual(2, '🌸')" id="btn-ritual-2" class="bg-white hover:bg-emerald-800 hover:text-white border border-stone-200 font-bold px-4 py-1.5 rounded-xl text-stone-700 cursor-pointer shadow-2xs transition-all text-xs">Hecho</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs space-y-5">
+                        <div class="flex items-center gap-2 border-b border-stone-100 pb-3 text-emerald-950"><i data-lucide="phone-call" class="w-4.5 h-4.5 text-emerald-700"></i><h4 class="text-xs font-bold uppercase tracking-wider">Red de Apoyo Inmediato Chile</h4></div>
+                        <p class="text-xs text-stone-500 leading-relaxed">Líneas gratuitas oficiales atendidas por psicólogos de turno del Ministerio de Salud:</p>
+                        
+                        <div class="space-y-3.5">
+                            <div class="bg-rose-50/60 p-4 rounded-2xl border border-rose-100 space-y-1">
+                                <span class="text-[9px] font-bold bg-rose-200 text-rose-900 px-2 py-0.5 rounded-md uppercase tracking-wider">Prevención y Crisis Minsal</span>
+                                <div class="flex items-center justify-between font-serif font-bold text-rose-950 text-base"><span>Fono *4141</span><a href="tel:*4141" class="text-xs text-rose-700 underline flex items-center gap-0.5 font-sans"><i data-lucide="phone" class="w-3 h-3"></i> Llamar</a></div>
+                                <p class="text-[10px] text-rose-800/90 leading-tight">Canal directo, gratuito y confidencial disponible las 24 horas del día.</p>
+                            </div>
+
+                            <div class="bg-emerald-50/60 p-4 rounded-2xl border border-emerald-100 space-y-1">
+                                <span class="text-[9px] font-bold bg-emerald-200 text-emerald-900 px-2 py-0.5 rounded-md uppercase tracking-wider">Salud Responde</span>
+                                <div class="flex items-center justify-between font-serif font-bold text-emerald-950 text-base"><span>600 360 77 77</span><a href="tel:6003607777" class="text-xs text-emerald-700 underline flex items-center gap-0.5 font-sans"><i data-lucide="phone" class="w-3 h-3"></i> Llamar</a></div>
+                                <p class="text-[10px] text-emerald-800/90 leading-tight">Selecciona la opción de psicólogos de turno para contención emocional.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="gran-jardin-bioma" class="mt-12 bg-gradient-to-br from-emerald-900 via-emerald-950 to-stone-950 text-stone-100 p-6 md:p-8 rounded-3xl shadow-2xl relative overflow-hidden border border-emerald-800/50">
+                
+                <div class="absolute right-6 top-6 bg-stone-900/40 p-4 rounded-2xl border border-white/5 text-right space-y-1 text-xs backdrop-blur-xs hidden md:block">
+                    <div class="relative inline-block text-2xl">
+                        <span class="smoke absolute -top-4 left-2 text-stone-300 font-bold text-sm">☁️</span>
+                        <span>🏡</span>
+                    </div>
+                    <p class="text-[10px] text-emerald-300 font-serif font-bold italic">Refugio de la Memoria</p>
+                    <p class="text-[8px] text-stone-400 tracking-tight">Donde descansan tus intenciones</p>
+                </div>
+
+                <div class="space-y-6 max-w-4xl">
+                    <div class="space-y-1.5">
+                        <div class="flex items-center gap-2 text-emerald-400"><i data-lucide="flower" class="w-5 h-5 animate-pulse"></i><h3 class="font-serif font-black text-white text-xl tracking-wide">Invernadero e Jardín de Intenciones Expandido</h3></div>
+                        <p class="text-xs text-stone-300 max-w-2xl leading-relaxed">Cada módulo resguardado en tu bóveda o carta enviada al viento genera vida. Selecciona una semilla de tu almacén de luz y haz clic en cualquiera de las **12 parcelas de tierra fértil** para sembrar.</p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3 bg-stone-900/60 p-3 rounded-2xl border border-white/5 text-xs max-w-xl">
+                        <span class="text-[10px] font-bold text-stone-400 uppercase tracking-widest px-2">Semillas:</span>
+                        <button id="semilla-girasol" onclick="seleccionarSemilla('🌻')" class="bg-white/10 hover:bg-white/20 border border-white/5 px-3 py-1.5 rounded-xl cursor-pointer font-medium text-center transition-all flex items-center gap-1 text-xs">🌻 Girasol (1)</button>
+                        <button id="semilla-brote" onclick="seleccionarSemilla('🌿')" class="bg-white/10 hover:bg-white/20 border border-white/5 px-3 py-1.5 rounded-xl cursor-pointer font-medium text-center transition-all flex items-center gap-1 text-xs">🌿 Arbusto (0)</button>
+                        <button id="semilla-flor" onclick="seleccionarSemilla('🌸')" class="bg-white/10 hover:bg-white/20 border border-white/5 px-3 py-1.5 rounded-xl cursor-pointer font-medium text-center transition-all flex items-center gap-1 text-xs">🌸 Cerezo (0)</button>
+                    </div>
+
+                    <div class="grid grid-cols-4 sm:grid-cols-6 gap-3.5 max-w-2xl pt-2">
+                        <div onclick="interactuarParcela(0)" id="plot-0" class="aspect-square soil-plot rounded-xl flex items-center justify-center text-3xl cursor-pointer transition-all"></div>
+                        <div onclick="interactuarParcela(1)" id="plot-1" class="aspect-square soil-plot rounded-xl flex items-center justify-center text-3xl cursor-pointer transition-all"></div>
+                        <div onclick="interactuarParcela(2)" id="plot-2" class="aspect-square soil-plot rounded-xl flex items-center justify-center text-3xl cursor-pointer transition-all"></div>
+                        <div onclick="interactuarParcela(3)" id="plot-3" class="aspect-square soil-plot rounded-xl flex items-center justify-center text-3xl cursor-pointer transition-all"></div>
+                        <div onclick="interactuarParcela(4)" id="plot-4" class="aspect-square soil-plot rounded-xl flex items-center justify-center text-3xl cursor-pointer transition-all"></div>
+                        <div onclick="interactuarParcela(5)" id="plot-5" class="aspect-square soil-plot rounded-xl flex items-center justify-center text-3xl cursor-pointer transition-all"></div>
+                        <div onclick="interactuarParcela(6)" id="plot-6" class="aspect-square soil-plot rounded-xl flex items-center justify-center text-3xl cursor-pointer transition-all"></div>
+                        <div onclick="interactuarParcela(7)" id="plot-7" class="aspect-square soil-plot rounded-xl flex items-center justify-center text-3xl cursor-pointer transition-all"></div>
+                        <div onclick="interactuarParcela(8)" id="plot-8" class="aspect-square soil-plot rounded-xl flex items-center justify-center text-3xl cursor-pointer transition-all"></div>
+                        <div onclick="interactuarParcela(9)" id="plot-9" class="aspect-square soil-plot rounded-xl flex items-center justify-center text-3xl cursor-pointer transition-all"></div>
+                        <div onclick="interactuarParcela(10)" id="plot-10" class="aspect-square soil-plot rounded-xl flex items-center justify-center text-3xl cursor-pointer transition-all"></div>
+                        <div onclick="interactuarParcela(11)" id="plot-11" class="aspect-square soil-plot rounded-xl flex items-center justify-center text-3xl cursor-pointer transition-all"></div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="bg-stone-900 text-stone-400 border-t border-stone-800 mt-16">
+            <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-xs">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2 text-stone-100 font-serif font-bold text-base">
+                        <i data-lucide="tree-pine" class="text-emerald-500 w-5 h-5"></i><span>Raíces Inc. Chile</span>
+                    </div>
+                    <p class="leading-relaxed text-stone-400">Primer ecosistema tecnológico y humano en Chile diseñado para dignificar el legado digital y acompañar a las familias.</p>
+                </div>
+                <div class="space-y-2">
+                    <h4 class="text-stone-200 font-bold uppercase tracking-wider">Políticas de Privacidad</h4>
+                    <p class="leading-relaxed">Tus voluntades morales y documentos privados están resguardados bajo algoritmos de encriptación simétrica.</p>
+                </div>
+                <div class="space-y-2">
+                    <h4 class="text-stone-200 font-bold uppercase tracking-wider">Soporte Corporativo</h4>
+                    <div class="flex items-center gap-2 text-stone-200 font-semibold pt-1 text-xs"><i data-lucide="mail" class="w-4 h-4 text-emerald-500"></i> contacto@raiceslegado.cl</div>
+                </div>
+            </div>
+            <div class="bg-stone-950 py-4 text-center text-[11px] text-stone-600 border-t border-stone-900/60">&copy; 2026 Raíces Chile. Resguardo moral, legal y emocional familiar.</div>
+        </footer>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Base de Datos de Citas Filosóficas sobre el Tránsito
+        const citasLegado = [
+            { texto: '"Estar listo para partir es el mayor acto de orden y amor que puedes regalarle a los que se quedan."', autor: "Filosofía Estoica" },
+            { texto: '"La muerte no es extinguir la luz; es solo apagar la lámpara porque ha llegado el amanecer."', autor: "Rabindranath Tagore" },
+            { texto: '"Bienaventurado aquel que ordena sus intenciones en vida; camina el presente con alma libre."', autor: "Proverbio de Paz" }
+        ];
+        let indiceCita = 0;
+
+        function rotarCita() {
+            indiceCita = (indiceCita + 1) % citasLegado.length;
+            document.getElementById('cita-filosofica').innerText = citasLegado[indiceCita].texto;
+            document.getElementById('cita-autor').innerText = `— ${citasLegado[indiceCita].autor}`;
+        }
+
+        const respuestasDuelo = [
+            "El dolor que experimentas hoy es el reflejo de un amor inmenso que no se extinguirá jamás.",
+            "Tu escrito ha volado alto. No juzgues tus lágrimas ni tus sonrisas; honrar la memoria es también abrazar tu humanidad.",
+            "Como las hojas del árbol en otoño, la savia de los hermosos recuerdos vive eterna en ti."
+        ];
+
+        // Estado del Progreso Sucesorio
+        let pasoActualMapa = 1;
+        const bancoTramitesCompleto = {
+            1: { titulo: "Certificado Médico de Defunción", que: "Acta oficial médica indiscutible que constata las causas físicas del deceso.", como: "Entregado por el médico tratante en centros hospitalarios o por personal de salud de urgencia.", costo: "Gratuito", plazo: "Inmediato (Primeras 12 horas)" },
+            2: { titulo: "Inscripción en el Registro Civil de Chile", que: "Trámite legal obligatorio para dar de baja legal el RUT y emitir certificados oficiales.", como: "Asiste de forma presencial a cualquier sucursal física del Servicio de Registro Civil.", costo: "Gratuito", plazo: "Antes de cumplirse 24 horas del deceso" },
+            3: { titulo: "Pase de Sepultación & Funeraria", que: "Autorización oficial expedida por el Estado para proceder al entierro o cremación.", como: "Gestionado generalmente por la empresa funeraria contratada frente al cementerio respectivo.", costo: "Sujeto a arancel de la funeraria", plazo: "Dentro de las primeras 48 horas" },
+            4: { titulo: "Solicitud de Posesión Efectiva", que: "Hito legal supremo que declara quiénes son los herederos legítimos de los bienes.", como: "Se realiza en línea de manera digital mediante ClaveÚnica en el portal del Registro Civil.", costo: "Gratuito (Herencias menores a 15 UTA)", plazo: "Sugerido en los primeros meses" },
+            5: { titulo: "Inscripción de Bienes en el Conservador (CBR)", que: "Traspaso de dominio oficial y definitivo de propiedades inmuebles.", como: "Se presenta la resolución de la Posesión Efectiva aprobada ante el Conservador de Bienes Raíces.", costo: "Sujeto a arancel del CBR", plazo: "Al concluir los trámites en el SII" }
+        };
+
+        function mostrarPanelExplicativo(id) {
+            if (id > pasoActualMapa) return;
+            const data = bancoTramitesCompleto[id];
+            document.getElementById('vacio-explicativo').classList.add('hidden');
+            document.getElementById('ticket-titulo').innerText = data.titulo;
+            document.getElementById('ticket-que').innerText = data.que;
+            document.getElementById('ticket-como').innerText = data.como;
+            document.getElementById('ticket-costo').innerText = data.costo;
+            document.getElementById('ticket-plazo').innerText = data.plazo;
+            document.getElementById('contenido-explicativo-fijo').classList.remove('hidden');
+        }
+
+        function completarPasoMapa(id) {
+            document.getElementById(`nodo-mapa-${id}`).classList.add('opacity-60');
+            document.getElementById(`indicador-circulo-${id}`).className = "w-12 h-12 rounded-xl bg-emerald-800 text-white flex items-center justify-center font-bold text-sm shadow-inner flex-shrink-0";
+            document.getElementById(`indicador-circulo-${id}`).innerHTML = `<i data-lucide="check" class="w-4 h-4"></i>`;
+            document.getElementById(`control-nodo-${id}`).innerHTML = `<span class="text-emerald-800 text-xs font-bold flex items-center gap-1.5 pt-1"><i data-lucide="check-circle" class="w-4 h-4"></i> Trámite Civil Completado</span>`;
+            
+            pasoActualMapa = id + 1;
+            if (pasoActualMapa <= 5) {
+                const sig = document.getElementById(`nodo-mapa-${pasoActualMapa}`);
+                sig.classList.remove('opacity-40', 'pointer-events-none');
+                document.getElementById(`indicador-circulo-${pasoActualMapa}`).className = "w-12 h-12 rounded-xl bg-amber-600 text-white flex items-center justify-center font-bold text-sm shadow-md z-10 flex-shrink-0";
+                document.getElementById(`indicador-circulo-${pasoActualMapa}`).innerHTML = pasoActualMapa;
+                document.getElementById(`control-nodo-${pasoActualMapa}`).innerHTML = `<button onclick="completarPasoMapa(${pasoActualMapa})" class="bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-xs px-4 py-2 rounded-xl cursor-pointer shadow-xs flex items-center gap-1.5 transition-all"><i data-lucide="check" class="w-4 h-4"></i> Marcar como Completado</button>`;
+                mostrarPanelExplicativo(pasoActualMapa);
+            }
+            actualizarEstadoArbolEstructural(id);
+            lucide.createIcons();
+        }
+
+        function actualizarEstadoArbolEstructural(pasos) {
+            const icono = document.getElementById('icono-arbol-dinamico');
+            const badge = document.getElementById('badge-etapa-actual');
+            const titulo = document.getElementById('titulo-arbol-dinamico');
+
+            if(pasos === 1) {
+                icono.innerHTML = `<i data-lucide="sprout" class="w-16 h-16 text-emerald-500"></i>`;
+                badge.innerText = "Etapa 1: Brote Verde";
+                titulo.innerText = "El Brote Sucesorio Inicial";
+            } else if (pasos === 2) {
+                icono.innerHTML = `<i data-lucide="leaf" class="w-16 h-16 text-emerald-600"></i>`;
+                badge.innerText = "Etapa 2: Hojas de Identidad";
+                titulo.innerText = "Organización e Identidad Civil";
+            } else if (pasos >= 4) {
+                icono.innerHTML = `<i data-lucide="tree-pine" class="w-16 h-16 text-emerald-900"></i>`;
+                badge.innerText = "Etapa Final: Árbol Centenario";
+                titulo.innerText = "Gran Árbol de Legado Resuelto";
+            }
+            lucide.createIcons();
+        }
+
+        // SISTEMA DE ALMACÉN DE SEMILLAS & JARDÍN
+        let inventario = { '🌻': 1, '🌿': 0, '🌸': 0 };
+        let terreno = ['', '', '', '', '', '', '', '', '', '', '', '']; 
+        let semillaSeleccionada = null;
+        let contadorCartas = 0;
+
+        function archivoSimuladoCargado() {
+            document.getElementById('status-archivo').classList.remove('hidden');
+        }
+
+        // SISTEMA DE GUARDADO Y VISTA DE ARCHIVOS/DATOS EN BÓVEDA
+        function guardarModuloLegado(nombreModulo) {
+            let valorGuardar = "";
+            if (nombreModulo === 'Guardianes') {
+                const nom = document.getElementById('g-nombre').value.trim();
+                const mail = document.getElementById('g-correo').value.trim();
+                if (!nom || !mail) { alert("Completa los campos del protector."); return; }
+                valorGuardar = `${nom} (${mail})`;
+                document.getElementById(`val-Guardianes`).innerText = valorGuardar;
+            } else if (nombreModulo === 'Documentos') {
+                const fileInput = document.getElementById('file-input');
+                valorGuardar = fileInput.files.length > 0 ? fileInput.files[0].name : "Documento_Critico_Cifrado.pdf";
+                document.getElementById(`val-Documentos`).innerText = valorGuardar;
+            } else if (nombreModulo === 'Cementerio') {
+                const parque = document.getElementById('c-parque').value.trim();
+                if (!parque) { alert("Ingresa una ubicación válida."); return; }
+                valorGuardar = parque;
+                document.getElementById(`val-Cementerio`).innerText = valorGuardar;
+            } else if (nombreModulo === 'Cartas') {
+                const carta = document.getElementById('m-carta').value.trim();
+                if (!carta) { alert("Escribe un mensaje de despedida."); return; }
+                valorGuardar = carta;
+                document.getElementById(`val-Cartas`).innerText = valorGuardar;
+            }
+
+            // Cambiar Interfaz a vista de lo que subió
+            document.getElementById(`form-${nombreModulo}`).classList.add('hidden');
+            document.getElementById(`badge-status-${nombreModulo}`).className = "bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase";
+            document.getElementById(`badge-status-${nombreModulo}`).innerText = "Resguardado";
+            document.getElementById(`preview-${nombreModulo}`).classList.remove('hidden');
+
+            // Regalar semilla
+            const opciones = ['🌻', '🌿', '🌸'];
+            const ganada = opciones[Math.floor(Math.random() * opciones.length)];
+            inventario[ganada]++;
+            actualizarInterfazInventario();
+        }
+
+        // MODIFICAR LO YA SUBIDO REVERTIENDO EL ESTADO
+        function modificarModuloLegado(nombreModulo) {
+            document.getElementById(`preview-${nombreModulo}`).classList.add('hidden');
+            document.getElementById(`form-${nombreModulo}`).classList.remove('hidden');
+            document.getElementById(`badge-status-${nombreModulo}`).className = "bg-amber-100 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase";
+            document.getElementById(`badge-status-${nombreModulo}`).innerText = "Modificando";
+            
+            if (nombreModulo === 'Documentos') {
+                document.getElementById('status-archivo').classList.add('hidden');
+            }
+        }
+
+        function enviarCartaAlAire() {
+            const txt = document.getElementById('texto-duelo-libre').value.trim();
+            if (!txt) return;
+
+            document.getElementById('recuadro-aliento').classList.remove('hidden');
+            const respuestaRamdom = respuestasDuelo[Math.floor(Math.random() * respuestasDuelo.length)];
+            document.getElementById('mensaje-aliento-texto').innerText = respuestaRamdom;
+
+            contadorCartas++;
+            const contenedor = document.getElementById('contenedor-hojas-almas');
+            if(contadorCartas === 1) { contenedor.innerHTML = ''; }
+
+            const spanHoja = document.createElement('span');
+            spanHoja.className = "text-[11px] bg-emerald-50 text-emerald-900 border border-emerald-100 font-medium px-3 py-1.5 rounded-xl flex items-center gap-1.5 animated-leaf";
+            spanHoja.innerHTML = `<i data-lucide="sparkles" class="w-3.5 h-3.5 text-emerald-600"></i> Hoja de Luz #${contadorCartas}`;
+            contenedor.appendChild(spanHoja);
+
+            document.getElementById('texto-duelo-libre').value = "";
+            inventario['🌿']++;
+            actualizarInterfazInventario();
+            lucide.createIcons();
+        }
+
+        function completarRitual(id, semilla) {
+            const btn = document.getElementById(`btn-ritual-${id}`);
+            btn.disabled = true;
+            btn.className = "bg-emerald-100 text-xs font-bold px-4 py-1.5 rounded-xl text-emerald-800 border border-emerald-200 cursor-not-allowed";
+            btn.innerText = "Hecho ✓";
+
+            inventario[semilla]++;
+            actualizarInterfazInventario();
+        }
+
+        function actualizarInterfazInventario() {
+            const estInactivo = "bg-white/10 hover:bg-white/20 border border-white/5 px-3 py-1.5 rounded-xl cursor-pointer font-medium text-center transition-all flex items-center gap-1 text-xs text-stone-200";
+            const estActivo = "bg-emerald-600 border border-emerald-400 px-3 py-1.5 rounded-xl cursor-pointer font-bold text-center transition-all flex items-center gap-1 text-xs text-white shadow-md scale-105";
+
+            document.getElementById('semilla-girasol').className = semillaSeleccionada === '🌻' ? estActivo : estInactivo;
+            document.getElementById('semilla-brote').className = semillaSeleccionada === '🌿' ? estActivo : estInactivo;
+            document.getElementById('semilla-flor').className = semillaSeleccionada === '🌸' ? estActivo : estInactivo;
+
+            document.getElementById('semilla-girasol').innerText = `🌻 Girasol (${inventario['🌻']})`;
+            document.getElementById('semilla-brote').innerText = `🌿 Arbusto (${inventario['🌿']})`;
+            document.getElementById('semilla-flor').innerText = `🌸 Cerezo (${inventario['🌸']})`;
+        }
+
+        function seleccionarSemilla(tipo) {
+            if (inventario[tipo] > 0) {
+                semillaSeleccionada = (semillaSeleccionada === tipo) ? null : tipo;
+                actualizarInterfazInventario();
+            }
+        }
+
+        function interactuarParcela(indice) {
+            if (semillaSeleccionada && terreno[indice] === '') {
+                terreno[indice] = semillaSeleccionada;
+                inventario[semillaSeleccionada]--;
+                semillaSeleccionada = null;
+                actualizarTerrenoVisual();
+                actualizarInterfazInventario();
+            } else if (!semillaSeleccionada && terreno[indice] !== '') {
+                let recolectada = terreno[indice];
+                terreno[indice] = '';
+                inventario[recolectada]++;
+                actualizarTerrenoVisual();
+                actualizarInterfazInventario();
+            }
+        }
+
+        function actualizarTerrenoVisual() {
+            for (let i = 0; i < 12; i++) {
+                document.getElementById(`plot-${i}`).innerText = terreno[i];
+            }
+        }
+
+        // CORRECCIÓN DE NAVEGACIÓN CON AUTO-SCROLL INTEGRADO
+        function irAPestañaDirecto(tipo) {
+            document.getElementById('pantalla-home').classList.add('hidden');
+            document.getElementById('interfaz-app').classList.remove('hidden');
+            document.getElementById('interfaz-app').classList.add('flex');
+            
+            cambiarSeccionUI(tipo);
+            actualizarInterfazInventario();
+            actualizarTerrenoVisual();
+
+            // Auto-scroll perfecto e inmediato al menú de la app para evitar bajadas manuales
+            document.getElementById('app-header').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function volverAlHome() {
+            document.getElementById('interfaz-app').classList.remove('flex');
+            document.getElementById('interfaz-app').classList.add('hidden');
+            document.getElementById('pantalla-home').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function cambiarSeccionUI(tipo) {
+            document.getElementById('seccion-post-deceso').classList.add('hidden');
+            document.getElementById('seccion-preventivo').classList.add('hidden');
+            document.getElementById('seccion-duelo').classList.add('hidden');
+            document.getElementById('menu-global').classList.add('hidden');
+
+            const estInactivo = "py-4 px-1 font-semibold text-xs md:text-sm border-b-2 border-transparent text-stone-500 cursor-pointer flex items-center gap-2 transition-all";
+            const estActivo = "py-4 px-1 font-bold text-xs md:text-sm border-b-2 border-emerald-800 text-emerald-950 cursor-pointer flex items-center gap-2 scale-102 transition-all";
+            
+            document.getElementById('nav-prev').className = estInactivo;
+            document.getElementById('nav-post').className = estInactivo;
+            document.getElementById('nav-duel').className = estInactivo;
+
+            if (tipo === 'post-deceso') {
+                document.getElementById('seccion-post-deceso').classList.remove('hidden');
+                document.getElementById('nav-post').className = estActivo;
+                mostrarPanelExplicativo(pasoActualMapa);
+            } else if (tipo === 'preventivo') {
+                document.getElementById('seccion-preventivo').classList.remove('hidden');
+                document.getElementById('nav-prev').className = estActivo;
+            } else if (tipo === 'duelo') {
+                document.getElementById('seccion-duelo').classList.remove('hidden');
+                document.getElementById('nav-duel').className = estActivo;
+            }
+        }
+
+        function toggleElemento(id) {
+            document.getElementById(id).classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
